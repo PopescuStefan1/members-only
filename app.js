@@ -50,10 +50,10 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-const userDetailsHandler = async (req, res, next) => {
+const userDetailsHandler = /*async*/ (req, res, next) => {
   console.log(req.user);
   res.locals.user = req.user;
-  res.locals.userDetails = await db.getUserDetails(req.user);
+  //   res.locals.userDetails = await db.getUserDetails(req.user);
   next();
 };
 
@@ -63,7 +63,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(userDetailsHandler);
 
-app.use("/auth", authenticationRouter);
+app.use("/", authenticationRouter);
 
 app.get("/", (req, res) => res.render("index"));
 app.get("/membership", (req, res) => res.render("membership"));

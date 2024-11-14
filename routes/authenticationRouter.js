@@ -8,14 +8,18 @@ authenticationRouter.get("/");
 authenticationRouter.get("/sign-up", (req, res) => res.render("sign-up-form"));
 
 authenticationRouter.post("/sign-up", signUp);
-
-// authenticationRouter.post(
-//   "/log-in",
-//   passport.authenticate("local", {
-//     successRedirect: "/",
-//     failureRedirect: "/",
-//   })
-// );
+authenticationRouter.get("/login", (req, res) => res.render("login-form"));
+authenticationRouter.post(
+  "/login",
+  (req, res, done) => {
+    console.log(req.body);
+    done();
+  },
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+  })
+);
 
 // authenticationRouter.get("/log-out", (req, res, next) => {
 //   req.logout((err) => {
