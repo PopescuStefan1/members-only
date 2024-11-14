@@ -6,6 +6,7 @@ import passport from "passport";
 import LocalStrategy from "passport-local";
 import bcrypt from "bcryptjs";
 import authenticationRouter from "./routes/authenticationRouter.js";
+import db from "./db/queries.js";
 
 const app = express();
 app.set("views", path.join(import.meta.dirname, "views"));
@@ -49,17 +50,22 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+const userDetailsHandler = async (req, res, next) => {
+  console.log(req.user);
+  res.locals.user = req.user;
+  res.locals.userDetails = await db.getUserDetails(req.user);
+  next();
+};
+
 app.use(session({ secret: "members_only", resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-  res.locals.currentUser = req.user;
-  next();
-});
+app.use(userDetailsHandler);
 
 app.use("/auth", authenticationRouter);
 
 app.get("/", (req, res) => res.render("index"));
+app.get("/membership", (req, res) => res.render("membership"));
 
 app.listen(3000, () => console.log("app listening on port 3000!"));

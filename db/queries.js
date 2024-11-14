@@ -9,4 +9,9 @@ async function signUp(email, password, firstName, lastName) {
   ]);
 }
 
-export default { signUp };
+async function getUserDetails(id) {
+  const { rows } = await pool.query("SELECT (email, first_name, last_name) FROM USERS WHERE id = $1", [id]);
+  return rows[0] || null;
+}
+
+export default { signUp, getUserDetails };
