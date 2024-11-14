@@ -1,0 +1,18 @@
+:root {
+  /* Generated using realtimecolors.com */
+  --text: #ece4e2;
+  --background: #140d0c;
+  --primary-color: #d2aaa5;
+  --secondary-color: #723a32;
+  --accent-color: #be5f51;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}

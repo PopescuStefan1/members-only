@@ -9,6 +9,7 @@ import authenticationRouter from "./routes/authenticationRouter.js";
 
 const app = express();
 app.set("views", path.join(import.meta.dirname, "views"));
+app.use(express.static(path.join(import.meta.dirname, "public")));
 app.set("view engine", "ejs");
 
 passport.use(
