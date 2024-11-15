@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a new message</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <h1>Create a new message</h1>
+    <form action="" method="post">
+      <label for="title">Title: </label><br />
+      <input type="text" name="title" id="title   " /><br />
+      <label for="text">Message: </label><br />
+      <input type="text" name="text" id="text" /><br />
+      <br />
+      <%- include("partials/errors.ejs") %>
+      <input type="submit" value="Submit" />
+    </form>
+    <br />
+    <a href="/">Go back</a>
+  </body>
+</html>

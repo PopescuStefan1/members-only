@@ -18,4 +18,8 @@ async function updateMembershipStatus(id, membershipStatus) {
   await pool.query("UPDATE users SET membership_status = $1 WHERE id = $2", [membershipStatus, id]);
 }
 
-export default { signUp, getUserDetails, updateMembershipStatus };
+async function createMessage(title, text, date, id) {
+  await pool.query("INSERT INTO posts (title, text, date, user_id) VALUES ($1, $2, $3, $4)", [title, text, date, id]);
+}
+
+export default { signUp, getUserDetails, updateMembershipStatus, createMessage };

@@ -5,6 +5,7 @@ import session from "express-session";
 import passport from "passport";
 import authenticationRouter from "./routes/authenticationRouter.js";
 import membershipRouter from "./routes/membershipRouter.js";
+import messagesRouter from "./routes/messagesRouter.js";
 
 const app = express();
 app.use(express.static(path.join(import.meta.dirname, "public")));
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 
 app.use("/", authenticationRouter);
 app.use("/membership", membershipRouter);
+app.use("/messages", messagesRouter);
 
 app.get("/", (req, res) => res.render("index"));
 app.get("/login", (req, res) => res.render("login-form"));
