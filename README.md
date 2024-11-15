@@ -2,7 +2,7 @@
 
 An exclusive clubhouse application where members can post anonymous messages. Inside the clubhouse, members can see the authors of the posts, but non-members can only see the story without knowing the author. Admins have additional privileges, such as deleting messages.
 
-![image](https://github.com/user-attachments/assets/f86c4b80-14fa-43ed-87d3-e87d1118c05b)
+![image](https://github.com/user-attachments/assets/96e04dc9-8f9e-4512-ad53-0521a4ea6648)
 
 ## Features
 - User authentication using ```passport.js```.
