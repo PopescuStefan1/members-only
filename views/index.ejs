@@ -7,8 +7,25 @@
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body>
-    <% if(!locals.user) { %>
-    <a href="/sign-up">Sign Up</a> or <a href="/login">Login</a>
+    <% if(!locals.messages) { %>
+    <h1>No messages posted</h1>
+    <% } else { %>
+    <h1>Messages:</h1>
+    <% messages.forEach(message => { %>
+    <div class="message-container">
+      <div class="message-title-div">
+        <h2 class="message-title"><%= message.title %></h2>
+        <span><% if(locals.user && user.membership_status) { %> <%= message.date.toLocaleString() %> <% } %></span>
+      </div>
+      <span class="message-author">
+        <% if(locals.user && user.membership_status) { %><%= message.first_name %> <%= message.last_name %><% } else {
+        %> Anonymous user <% } %>
+      </span>
+      <span class="message-text"><%= message.text %></span>
+    </div>
+    <% }); %> <% } %>
+    <br />
+    <% if(!locals.user) { %> <a href="/sign-up">Sign Up</a> or <a href="/login">Login</a>
     <% } else { %> <% if(user.membership_status) { %>
     <a href="/messages/create">Create a new message</a>
     <br />

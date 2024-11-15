@@ -16,3 +16,28 @@ a {
   all: unset;
   cursor: pointer;
 }
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.message-title-div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.message-title {
+  margin: 0;
+}
+
+.message-author {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.message-text {
+  font-size: larger;
+}

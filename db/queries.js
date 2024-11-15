@@ -22,4 +22,20 @@ async function createMessage(title, text, date, id) {
   await pool.query("INSERT INTO posts (title, text, date, user_id) VALUES ($1, $2, $3, $4)", [title, text, date, id]);
 }
 
-export default { signUp, getUserDetails, updateMembershipStatus, createMessage };
+async function getMessages() {
+  const { rows } = await pool.query(`
+    SELECT 
+      posts.id AS post_id,
+      posts.title,
+      posts.text,
+      posts.date,
+      users.id AS user_id,
+      users.first_name,
+      users.last_name
+    FROM posts
+    JOIN users ON posts.user_id = users.id;
+  `);
+  return rows;
+}
+
+export default { signUp, getUserDetails, updateMembershipStatus, createMessage, getMessages };
