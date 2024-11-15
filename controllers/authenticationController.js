@@ -53,7 +53,7 @@ export const signUp = [
       }
 
       try {
-        await db.signUp(req.body.email, hashedPassword, req.body.firstName, req.body.lastName);
+        await db.signUp(req.body.email, hashedPassword, req.body.firstName, req.body.lastName, req.body.isAdmin);
         res.redirect("/");
       } catch (err) {
         return next(err);

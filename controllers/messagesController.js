@@ -24,3 +24,8 @@ export const messagesCreatePost = [
     res.redirect("/");
   },
 ];
+
+export const messagesDeletePost = async (req, res) => {
+  await db.deleteMessage(req.params.id);
+  res.redirect("/");
+};

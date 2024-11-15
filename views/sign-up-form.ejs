@@ -16,8 +16,10 @@
       <label for="email">Email:</label><br />
       <input type="text" name="email" id="email" required /><br />
       <label for="password">Password:</label><br />
-      <input type="password" name="password" id="password" required />
-      <br />
+      <input type="password" name="password" id="password" required /><br /><br />
+      <label for="isAdmin">Is admin?</label>
+      <input type="checkbox" name="isAdmin" id="isAdmin" />
+      <br /><br />
       <%- include("partials/errors.ejs") %>
       <input type="submit" value="Submit" />
     </form>

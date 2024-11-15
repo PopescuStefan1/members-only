@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body>
-    <% if(!locals.messages) { %>
+    <% if(!locals.messages || messages.length === 0) { %>
     <h1>No messages posted</h1>
     <% } else { %>
     <h1>Messages:</h1>
@@ -16,6 +16,11 @@
       <div class="message-title-div">
         <h2 class="message-title"><%= message.title %></h2>
         <span><% if(locals.user && user.membership_status) { %> <%= message.date.toLocaleString() %> <% } %></span>
+        <% if(locals.user && user.is_admin) { %>
+        <form action="/messages/delete/<%=message.post_id%>" method="post">
+          <button type="submit">Delete message</button>
+        </form>
+        <% } %>
       </div>
       <span class="message-author">
         <% if(locals.user && user.membership_status) { %><%= message.first_name %> <%= message.last_name %><% } else {

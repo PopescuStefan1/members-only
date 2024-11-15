@@ -1,11 +1,12 @@
 import pool from "./pool.js";
 
-async function signUp(email, password, firstName, lastName) {
-  await pool.query("INSERT INTO users (email, password, first_name, last_name) VALUES ($1, $2, $3, $4)", [
+async function signUp(email, password, firstName, lastName, isAdmin) {
+  await pool.query("INSERT INTO users (email, password, first_name, last_name, is_admin) VALUES ($1, $2, $3, $4, $5)", [
     email,
     password,
     firstName,
     lastName,
+    isAdmin,
   ]);
 }
 
@@ -38,4 +39,8 @@ async function getMessages() {
   return rows;
 }
 
-export default { signUp, getUserDetails, updateMembershipStatus, createMessage, getMessages };
+async function deleteMessage(id) {
+  await pool.query("DELETE FROM posts WHERE id = $1", [id]);
+}
+
+export default { signUp, getUserDetails, updateMembershipStatus, createMessage, getMessages, deleteMessage };
