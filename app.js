@@ -4,6 +4,7 @@ import path from "path";
 import session from "express-session";
 import passport from "passport";
 import authenticationRouter from "./routes/authenticationRouter.js";
+import membershipRouter from "./routes/membershipRouter.js";
 
 const app = express();
 app.use(express.static(path.join(import.meta.dirname, "public")));
@@ -15,12 +16,13 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
+  res.locals.user = req.user;
   console.log(req.user);
-  res.locals.currentUser = req.user;
   next();
 });
 
 app.use("/", authenticationRouter);
+app.use("/membership", membershipRouter);
 
 app.get("/", (req, res) => res.render("index"));
 app.get("/login", (req, res) => res.render("login-form"));
@@ -31,6 +33,5 @@ app.post(
     failureRedirect: "/",
   })
 );
-app.get("/membership", (req, res) => res.render("membership"));
 
 app.listen(3000, () => console.log("app listening on port 3000!"));

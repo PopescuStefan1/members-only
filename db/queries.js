@@ -14,4 +14,8 @@ async function getUserDetails(id) {
   return rows[0] || null;
 }
 
-export default { signUp, getUserDetails };
+async function updateMembershipStatus(id, membershipStatus) {
+  await pool.query("UPDATE users SET membership_status = $1 WHERE id = $2", [membershipStatus, id]);
+}
+
+export default { signUp, getUserDetails, updateMembershipStatus };

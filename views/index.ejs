@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body>
+    <% if(!locals.user) { %>
     <a href="/sign-up">Sign Up</a> or <a href="/login">Login</a>
-    <br />
+    <% } else { %>
     <a href="/membership">Gain membership</a>
+    <% } %>
   </body>
 </html>
