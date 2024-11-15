@@ -49,7 +49,7 @@ DB=your_database_name
 DB_PORT=your_db_port
 SECRET_KEY=your_chose_secret_key (such as s3cr3t)
 ```
-5. **Database Setup:** Create a PostgreSQL database (This app assumes you will use the default database port 5432. If you use a different port, you will need to edit [pool.js](db/pool.js)):
+5. **Database Setup:** Create a PostgreSQL database:
 ```
 psql
 CREATE DATABASE your_database_name;
