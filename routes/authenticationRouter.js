@@ -55,14 +55,13 @@ authenticationRouter.post(
     failureRedirect: "/",
   })
 );
-
-// authenticationRouter.get("/log-out", (req, res, next) => {
-//   req.logout((err) => {
-//     if (err) {
-//       return next(err);
-//     }
-//     res.redirect("/");
-//   });
-// });
+authenticationRouter.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 export default authenticationRouter;
