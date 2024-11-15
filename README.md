@@ -4,6 +4,8 @@ An exclusive clubhouse application where members can post anonymous messages. In
 
 ![image](https://github.com/user-attachments/assets/96e04dc9-8f9e-4512-ad53-0521a4ea6648)
 
+![image](https://github.com/user-attachments/assets/9b386613-dba9-479c-949b-07e19ccd6685)
+
 ## Features
 - User authentication using ```passport.js```.
 - Members-only access to certain features, such as viewing post authors and timestamps.
