@@ -18,7 +18,7 @@
         <span><% if(locals.user && user.membership_status) { %> <%= message.date.toLocaleString() %> <% } %></span>
         <% if(locals.user && user.is_admin) { %>
         <form action="/messages/delete/<%=message.post_id%>" method="post">
-          <button type="submit">Delete message</button>
+          <input type="submit" value="Delete message"></button>
         </form>
         <% } %>
       </div>
@@ -29,15 +29,12 @@
       <span class="message-text"><%= message.text %></span>
     </div>
     <% }); %> <% } %>
-    <br />
+    <br /><br />
     <% if(!locals.user) { %> <a href="/sign-up">Sign Up</a> or <a href="/login">Login</a>
     <% } else { %> <% if(user.membership_status) { %>
     <a href="/messages/create">Create a new message</a>
-    <br />
     <% } %>
-    <br />
     <a href="/membership">Membership</a>
-    <br />
     <a href="/logout">Log out</a>
     <% } %>
   </body>
